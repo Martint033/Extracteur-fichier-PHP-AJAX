@@ -8,11 +8,17 @@
 </head>
 <body>
 <?php
+
 if($dossier = opendir('fichiers-externe')){
     while(false !== ($fichier = readdir($dossier))){
-        echo$fichier
+        if($fichier != '.' && $fichier != '..' && $fichier != 'index.php'){
+            echo $fichier;
+            echo ", ";
+        }
     }
 }   
+
+else { echo"erreur ouverture dossier"; }
 ?>
 
 </body>
