@@ -17,8 +17,9 @@ if($dossier = opendir('fichiers-externe')){
         }
     }
 }   
+else { echo "dossier introuvable"; }
 
-else { echo"erreur ouverture dossier"; }
+closedir($dossier);
 ?>
 
 </body>
