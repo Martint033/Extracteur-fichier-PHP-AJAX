@@ -18,8 +18,10 @@ if($dossier = opendir('fichiers-externe'))
         echo$fichier;
         $nbf++;
     }
-    echo 'nb fichiers'; echo "$nbf";
+    echo 'Il y a'; echo "$nbf"; echo 'fichiers';
 }
+
+
 
 ?>
 
