@@ -7,17 +7,22 @@
     <title>Document</title>
 </head>
 <body>
+
 <?php
 
-if($dossier = opendir('fichiers-externe')){
+$nbf = 0;
+
+if($dossier = opendir('fichiers-externe'))
+{
     while(false !== ($fichier = readdir($dossier))){
         if($fichier != '.' && $fichier != '..' && $fichier != 'index.php'){
-            // echo $fichier;
-            // echo ", ";
+            echo$fichier;
+        $nbf++;
         }
+        
     }
-}   
-else { echo "dossier introuvable"; }
+    echo 'nb fichiers'; echo "$nbf";
+}
 
 
 if ($monfichier = fopen('fichiers-externe/fichier1.txt', 'r')){
