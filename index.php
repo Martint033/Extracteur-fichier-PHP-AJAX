@@ -7,6 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    
+<?php
+if($dossier = opendir('fichiers-externe')){
+    while(false !== ($fichier = readdir($dossier))){
+        echo$fichier
+    }
+}   
+?>
+
 </body>
 </html>
