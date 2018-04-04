@@ -12,12 +12,19 @@
 if($dossier = opendir('fichiers-externe')){
     while(false !== ($fichier = readdir($dossier))){
         if($fichier != '.' && $fichier != '..' && $fichier != 'index.php'){
-            echo $fichier;
-            echo ", ";
+            // echo $fichier;
+            // echo ", ";
         }
     }
 }   
 else { echo "dossier introuvable"; }
+
+
+if ($monfichier = fopen('fichiers-externe/fichier1.txt', 'r')){
+    echo fgets($monfichier);
+    fclose($monfichier);
+}
+
 
 closedir($dossier);
 ?>
