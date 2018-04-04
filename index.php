@@ -15,14 +15,24 @@ $nbf = 0;
 if($dossier = opendir('fichiers-externe'))
 {
     while(false !== ($fichier = readdir($dossier))){
-        echo$fichier;
+        if($fichier != '.' && $fichier != '..' && $fichier != 'index.php'){
+            echo ""
         $nbf++;
+        }
+
     }
     echo 'Il y a'; echo "$nbf"; echo 'fichiers';
 }
 
 
 
+if ($monfichier = fopen('fichiers-externe')){
+    echo fgets($monfichier);
+    fclose($monfichier);
+}
+
+
+closedir($dossier);
 ?>
 
 </body>
