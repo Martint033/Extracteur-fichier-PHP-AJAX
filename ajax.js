@@ -19,17 +19,31 @@
 
 // });
 
+
+
+
 fetch('ex1.php').then( // on attend d'avoir complètement chargé le fichier, PUIS (then)on effectue la fonction
     function (response){
         return response.json();
     }
 ).then(function(response){
     for (element in response){
+        
         for (value in response[element]){
-            console.log (response[element][value]);
-            document.getElementById('listAjax').innerHTML += '<a href="./' + response[element][value] + ' "> '+ response[element][value] + '</a><br>';
+            // console.log (response[element][value]);
+            document.getElementById('listAjax').innerHTML += '<a href="./' + response[element][value] + ' "> '+ response[element][value] + '</a><br>';    
+            
+            var liens = document.getElementsByTagName('a');
+            for(i=0; i<liens.length; i++) {
+                liens[i].addEventListener('click', function(e){e.preventDefault();});
+             }
+        
         }
+
     } 
+    // return true;   
 });
+
+
 
 
