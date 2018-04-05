@@ -16,23 +16,22 @@ if($dossier = opendir('fichiers-externe'))
 {
     while(false !== ($fichier = readdir($dossier))){
         if($fichier != '.' && $fichier != '..' && $fichier != 'index.php'){
-            echo "<a href=\"fichiers-externe/$fichier> $fichier </a>";
+            echo "<a href=\"fichiers-externe/$fichier\"> $fichier </a>";
             $nbf++;
-        }
-        
+        }    
     }
     echo 'nb fichiers'; echo "$nbf";
 }
 
 
-if ($monfichier = fopen('fichiers-externe/fichier1.txt', 'r')){
-    echo fgets($monfichier);
-    fclose($monfichier);
-}
+// if ($monfichier = fopen('fichiers-externe/fichier1.txt', 'r')){
+//     echo fgets($monfichier);
+//     fclose($monfichier);
+// }
 
 
 closedir($dossier);
 ?>
-
+<script type="text/javascript" src="script.js"></script>
 </body>
 </html>
