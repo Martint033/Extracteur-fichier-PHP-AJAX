@@ -25,10 +25,9 @@ fetch('ex1.php').then( // on attend d'avoir complètement chargé le fichier, PU
     }
 ).then(function(response){
     for (element in response){
-       
         for (value in response[element]){
             console.log (response[element][value]);
-            document.getElementById('listAjax').innerHTML += response[element][value] + "<br>";
+            document.getElementById('listAjax').innerHTML += '<a href="./' + response[element][value] + ' "> '+ response[element][value] + '</a><br>';
         }
     } 
 });
