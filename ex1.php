@@ -1,7 +1,6 @@
 <?php
 
-echo '<?xml version"1.0" encoding="UTF-8" standalone="yes" ?>';
-echo '<response>';
+
 
 // if($dossier = opendir ('fichiers-externe')){
 //     while(false !== ($elements= readdir($dossier))){
@@ -14,7 +13,7 @@ echo '<response>';
 // } else {
 //     echo 'Dossier introuvable';
 // } 
-//  echo '</response>';
+ 
 
 
 $folderContent = array("listFiles"=>"", "listDir" =>"");
