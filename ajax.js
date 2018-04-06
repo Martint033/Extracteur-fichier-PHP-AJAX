@@ -2,8 +2,8 @@
 //     var xmlhttp = new XMLHttpRequest();
 //     console.log(xmlhttp);
 //     xmlhttp.onreadystatechange = function() {
-//         if (xmlhttp.readyState == 4 && (xmlhttp.status == 200 || xmlhttp.status == 0)) {
-//            callback(xmlhttp.response);
+//         if (xmlhttp.readyState == 4 && (xmlhttp.status == 200 || xmlhttp.status == 0)) { 
+//            callback(xmlhttp.response);   
 //         }
 //     };
 //     xmlhttp.open("GET", "ex1.php", true);
@@ -19,29 +19,17 @@
 
 // });
 
-// fetch('ex1.php').then( // on attend d'avoir complètement chargé le fichier, PUIS (then)on effectue la fonction
-//     function (response){
-//         return response.text();
-//     }
-// ).then(function(response){
-//      console.log(response);
-// });
+window.onbeforeunload = function() { 'some function that does not reload the page' 
 
-function refresh() {
-    $.ajax({
-        url: "ex1.php", // Ton fichier ou se trouve ton chat
-        success:
-            function(retour){
-            $('listAjax').html(retour); // rafraichi toute ta DIV "bien sur il lui faut un id "
+fetch('ex1.php').then( // on attend d'avoir complètement chargé le fichier, PUIS (then)on effectue la fonction
+    function (response){
+        return response.json();
+    }
+).then(function(response){
+    for (element in response){
+        for (value in response[element]){
+            console.log (response[element][value]);
+            document.getElementById('listAjax').innerHTML += '<a href="./' + response[element][value] + ' "> '+ response[element][value] + '</a><br>';
         }
-    });
-
-    }
-
-    setInterval(refresh(), 10000) // Répète la fonction toutes les 10 sec
-
-
-
-    fetch ("ex1.php").then (function (response)) {
-        
-    }
+    } 
+})};
