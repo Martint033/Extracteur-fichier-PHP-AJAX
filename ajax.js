@@ -22,7 +22,7 @@
 
 function exploration(source){
     console.log(source);
-    var xhr = new XMLHttpRequest();
+    method : 'GET'; 
     xhr.open("GET", "ex1.php?$url=" + source, true);
     xhr.send(null);
     
