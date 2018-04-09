@@ -6,7 +6,9 @@
 //     xhr.open("GET", "ex1.php?url=" + source, true);
 //     xhr.send(null);
 
-var url = "*";
+var url = ["*"];
+var i = 0;
+
 function explorateur(url){
     fetch("ex1.php"+"?dir="+url).then( // on attend d'avoir complètement chargé le fichier, PUIS (then)on effectue la fonction 
         function (response){
@@ -28,13 +30,29 @@ function explorateur(url){
         }
     })
 }
-
 explorateur(url);
 
-document.querySelector('body').addEventListener('click', function(event){
-    event.preventDefault();
-    url = event.target.innerText+"/*";
-    explorateur(url);
+
+function displayRetour(){
+    if (document.querySelector('p.back')){
+    document.getElementById('back').innerHTML = '<a href=""> retour </a> ';
+    }
+}
+
+
+document.querySelector('div').addEventListener('click', function(event){
+   if (event.target.tagName == "A"){
+        console.log(document.getElementsByTagName);
+        event.preventDefault();
+        url = event.target.innerText+"/*";
+        document.getElementById('listAjax').innerHTML = "";
+        explorateur(url);
+        
+    }
+    else {
+        event.preventDefault();
+    }
+
 });
     
 
