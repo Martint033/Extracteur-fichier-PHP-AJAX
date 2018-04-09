@@ -7,6 +7,7 @@
 //     xhr.send(null);
 
 var url = ["*"];
+console.log(url);
 var i = 0;
 function explorateur(url){
     console.log(url);
@@ -29,14 +30,27 @@ function explorateur(url){
 
 explorateur(url[0]);
 
+function creerBouton() {
+            var button = document.createElement("input" ) ;
+            button.type = "button" ;
+            button.setAttribute("value","retour") ;
+            button.setAttribute("id","display") ;
+            document.getElementById('retour').appendChild(button) ;
+    }
+
+
+
+
 document.querySelector('body').addEventListener('click', function(event){
     if (event.target.tagName == "A"){
         event.preventDefault();
         i++;
         url[i] = event.target.innerText+"/*";
         document.getElementById("listAjax").innerHTML = "";
-        explorateur(url[i]);
+        explorateur(url[i]);   
+        
     }
+
     else if (event.target.tagName == "INPUT") {
         event.preventDefault();
         if (i > 0){
@@ -44,11 +58,19 @@ document.querySelector('body').addEventListener('click', function(event){
             i--;
             document.getElementById("listAjax").innerHTML = "";
             explorateur(url[i]);
+            console.log(url.length);    
         }
     }
-
     else {
         event.preventDefault();
+    }
+    if (url.length >1){
+           
+        document.getElementById("retour").innerHTML = "";
+        creerBouton();
+    }
+    else if (url.length ===1){   
+        document.getElementById("retour").innerHTML = "";
     }
 });
     
