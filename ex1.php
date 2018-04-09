@@ -2,14 +2,10 @@
 $path = $_GET['dir'];
 
 if (isset ($path)){
-    echo $path;
-
     $folderContent = array("listFiles" =>"", "listDir" =>"");
-    $folderContent["listFiles"] = array_filter(glob($path."/*"), "is_file");
-    $folderContent["listDir"] = array_filter(glob($path."/*"), "is_dir");
-
+    $folderContent["listFiles"] = array_filter(glob($path), "is_file");
+    $folderContent["listDir"] = array_filter(glob($path), "is_dir");
 }
-
 echo json_encode($folderContent);
 
 ?>
