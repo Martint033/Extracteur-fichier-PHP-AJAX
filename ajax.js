@@ -6,22 +6,20 @@
 //     xhr.open("GET", "ex1.php?url=" + source, true);
 //     xhr.send(null);
 
-var url = "*";
+var url = ["*"];
+var i = 0;
 function explorateur(url){
+    console.log(url);
     fetch("ex1.php"+"?dir="+url).then( // on attend d'avoir complètement chargé le fichier, PUIS (then)on effectue la fonction 
         function (response){
-        console.log(response);
         return response.json();
     }).then(function(response){
         for (element in response){
-            console.log(element);
             for (value in response[element]){ 
                 if (element == 'listFiles'){ //si c'est un fichier
-                    console.log(element);
                     document.getElementById('listAjax').innerHTML += response[element][value] +'<br>';
                 } 
                 else if (element == 'listDir') { // si c'est un dossier
-                    console.log(element);
                     document.getElementById('listAjax').innerHTML += '<a href="/' + response[element][value] + ' "> '+ response[element][value] + '</a><br>';
                 }           
             } 
@@ -29,12 +27,29 @@ function explorateur(url){
     })
 }
 
-explorateur(url);
+explorateur(url[0]);
 
 document.querySelector('body').addEventListener('click', function(event){
-    event.preventDefault();
-    url = event.target.innerText+"/*";
-    explorateur(url);
+    if (event.target.tagName == "A"){
+        event.preventDefault();
+        i++;
+        url[i] = event.target.innerText+"/*";
+        document.getElementById("listAjax").innerHTML = "";
+        explorateur(url[i]);
+    }
+    else if (event.target.tagName == "INPUT") {
+        event.preventDefault();
+        if (i > 0){
+            url.pop();
+            i--;
+            document.getElementById("listAjax").innerHTML = "";
+            explorateur(url[i]);
+        }
+    }
+
+    else {
+        event.preventDefault();
+    }
 });
     
 
