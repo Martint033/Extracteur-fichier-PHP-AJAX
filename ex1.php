@@ -18,8 +18,8 @@
 
 if (isset($_GET["url"])){
     $folderContent = array("listFiles" =>"", "listDir" =>"");
-    $folderContent["listFiles"] = array_filter (glob('"'+$url+'"'), "is_file");
-    $folderContent["listDir"] = array_filter (glob('"'+$url+'"'), "is_dir");
+    $folderContent["listFiles"] = array_filter (glob("*"), "is_file");
+    $folderContent["listDir"] = array_filter (glob("*"), "is_dir");
     echo json_encode($folderContent);
 }
 
