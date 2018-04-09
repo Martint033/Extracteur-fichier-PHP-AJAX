@@ -6,9 +6,8 @@
 //     xhr.open("GET", "ex1.php?url=" + source, true);
 //     xhr.send(null);
 
-
-var url = "*";  
-function explorateur (url){
+var url = "*";
+function explorateur(url){
     fetch("ex1.php"+"?dir="+url).then( // on attend d'avoir complètement chargé le fichier, PUIS (then)on effectue la fonction 
         function (response){
         console.log(response);
